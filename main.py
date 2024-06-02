@@ -22,6 +22,20 @@ bg = pygame.image.load("img/bg.png")
 ground_img = pygame.image.load("img/ground.png")
 
 
+class Bird(pygame.sprite.sprite):
+    def __init__(self, x, y): 
+        pygame.sprite.sprite.__init__(self)
+        self.image = pygame.image.load("img/bird1.png")
+        self.rect = self.image.get_rect()  
+        self.rect.center = [x, y]
+
+# almost like a python list (list of sprites)
+bird_group = pygame.sprite.Group()
+
+flappy = Bird(100, int(screen_height / 2)) 
+
+bird_group.add(flappy)
+
 run = True 
 while run: 
 
@@ -30,6 +44,8 @@ while run:
 
     # draw background 
     screen.blit(bg, (0,0))
+
+    bird_group.draw(screen)
 
     # draw ground and make it scroll 
     screen.blit(ground_img, (ground_scroll, 768))
@@ -47,4 +63,3 @@ while run:
 
 pygame.quit()
 
-#test
