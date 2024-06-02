@@ -22,10 +22,17 @@ bg = pygame.image.load("img/bg.png")
 ground_img = pygame.image.load("img/ground.png")
 
 
-class Bird(pygame.sprite.sprite):
+class Bird(pygame.sprite.Sprite):
     def __init__(self, x, y): 
-        pygame.sprite.sprite.__init__(self)
-        self.image = pygame.image.load("img/bird1.png")
+        pygame.sprite.Sprite.__init__(self)
+        self.images = []
+        self.index = 0 
+        self.counter = 0 
+        for num in range(1, 4): 
+            img = pygame.image.load(f'img/bird1{num}.png')
+            self.images.append(img)
+        self.image 
+
         self.rect = self.image.get_rect()  
         self.rect.center = [x, y]
 
